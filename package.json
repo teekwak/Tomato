@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "postinstall": "install-app-deps",
-    "start": "electron .",
+    "start": "npm run webpack && electron .",
     "webpack": "webpack --config ./webpack.config.js",
     "clean": "rm -f ./views/bundle.js && rm -rf ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
