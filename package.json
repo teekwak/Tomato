@@ -1,16 +1,36 @@
 {
   "name": "Tomato",
   "version": "1.0.0",
-  "description": "",
+  "author": "Thomas Kwak <teekwak@gmail.com>",
+  "description": "Productivity Tracker...With Tomatoes!",
   "main": "main.js",
   "scripts": {
+    "postinstall": "install-app-deps",
     "start": "electron .",
-    "build": "webpack --config ./webpack.config.js",
-    "clean": "rm -f ./views/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "webpack --config ./webpack.config.js",
+    "clean": "rm -f ./views/bundle.js && rm -rf ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "npm run webpack && build"
   },
-  "author": "",
   "license": "ISC",
+  "build": {
+    "appId": "teekwak@gmail.com",
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    }
+  },
+
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
@@ -21,6 +41,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "electron": "^1.7.5",
+    "electron-builder": "^19.22.1",
     "webpack": "^3.5.4"
   }
 }
