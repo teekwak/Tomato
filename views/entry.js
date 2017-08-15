@@ -9,9 +9,7 @@
 // }
 
 import React from 'react'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
+import App from '../src/App'
 
-ReactDOM.render(
-  <div className="myDiv" style={{fontWeight: 'bold'}}>Hello Electron!</div>,
-  document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById('app'))
