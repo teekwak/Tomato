@@ -1,11 +1,11 @@
 import React from 'react';
-import DateContainer from './DateContainer';
+import DateComponent from './components/DateComponent';
 
 class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<DateContainer />
+				<DateComponent />
 
 				<button onClick={() => {
 					let myNotification = new Notification('Notification Title', {
@@ -13,7 +13,7 @@ class App extends React.Component {
 					});
 
 					myNotification.onclick = () => {
-						console.log('Notification clicked');
+						console.log('Notification clicked')
 					};
 				}}>create notification</button>
 			</div>

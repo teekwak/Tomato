@@ -1,6 +1,6 @@
 import React from 'react';
 
-class DateContainer extends React.Component {
+class DateComponent extends React.Component {
 	constructor() {
 		super();
 		this.state = {
@@ -9,18 +9,10 @@ class DateContainer extends React.Component {
 		};
 		this.interval = null;
 		this.months = [
-			'January', 
-			'February', 
-			'March', 
-			'April', 
-			'May',
-			'June',
-			'July',
-			'August',
-			'September',
-			'October',
-			'November',
-			'December'
+			'January', 'February', 'March', 
+			'April', 'May', 'June',
+			'July', 'August', 'September',
+			'October', 'November', 'December'
 		];
 	}
 
@@ -75,4 +67,4 @@ class DateContainer extends React.Component {
 	}
 }
 
-export default DateContainer;
+export default DateComponent;
