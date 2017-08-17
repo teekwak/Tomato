@@ -1,21 +1,13 @@
 import React from 'react';
 import DateComponent from './components/DateComponent';
+import TimerContainer from './containers/TimerContainer';
 
 class App extends React.Component {
 	render() {
 		return (
 			<div>
 				<DateComponent />
-
-				<button onClick={() => {
-					let myNotification = new Notification('Notification Title', {
-						body: 'This is the notification body'
-					});
-
-					myNotification.onclick = () => {
-						console.log('Notification clicked')
-					};
-				}}>create notification</button>
+				<TimerContainer />
 			</div>
 		);
 	}
