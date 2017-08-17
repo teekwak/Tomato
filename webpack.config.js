@@ -1,11 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+	devtool: 'eval',
 	context: path.join(__dirname, 'views'),
 	entry: [
-    './entry.js',
+		'./entry.js'
 	],
 	output: {
 		path: path.join(__dirname, 'views'),
