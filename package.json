@@ -5,7 +5,7 @@
   "description": "Productivity Tracker...With Tomatoes!",
   "main": "main.js",
   "scripts": {
-    "postinstall": "install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "start": "npm run webpack && electron .",
     "webpack": "webpack --config ./webpack.config.js",
     "clean": "rm -f ./views/bundle.js && rm -rf ./dist",
@@ -29,7 +29,6 @@
       "target": "nsis"
     }
   },
-
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
