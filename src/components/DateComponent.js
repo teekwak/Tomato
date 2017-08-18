@@ -20,7 +20,6 @@ class DateComponent extends React.Component {
 		const dateObject = new Date();
 		const month = this.months[dateObject.getMonth()];
 		const day = dateObject.getDay();
-		const year = dateObject.getFullYear();
 
 		let hour = dateObject.getHours();
 		let minute = dateObject.getMinutes();
@@ -43,7 +42,7 @@ class DateComponent extends React.Component {
 		}
 
 		this.setState({
-			date: month + ' ' + day + ' ' + year,
+			date: month + ' ' + day + ' ',
 			time: hour + ':' + minute + ':' + second + ' ' + ampm
 		});
 	}
@@ -59,7 +58,7 @@ class DateComponent extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="date">
 				<h1>{this.state.date}</h1>
 				<h3>{this.state.time}</h3>
 			</div>
