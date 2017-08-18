@@ -9,7 +9,7 @@
     "start": "npm run webpack && electron .",
     "webpack": "webpack --config ./webpack.config.js",
     "clean": "rm -f ./views/bundle.js && rm -rf ./dist",
-    "test": "jest",
+    "test": "jest && codecov -t 2df22e04-d498-45ab-9267-dc43e3f2807a",
     "dist": "npm run webpack && build"
   },
   "license": "ISC",
@@ -39,6 +39,7 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "codecov": "^2.3.0",
     "css-loader": "^0.28.4",
     "electron": "^1.7.5",
     "electron-builder": "^19.22.1",
@@ -48,5 +49,9 @@
     "react-test-renderer": "^15.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.4"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
