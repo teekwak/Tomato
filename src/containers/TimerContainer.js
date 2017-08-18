@@ -13,7 +13,7 @@ class TimerContainer extends React.Component {
 	}
 
 	componentDidMount() {
-		this.setState({secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE});
+		this.resetTimer();
 	}
 
 	componentWillUnmount() {
@@ -26,6 +26,7 @@ class TimerContainer extends React.Component {
 				clearInterval(this.interval);
 				this.toggleStarted();
 				this.sendNotification();
+				this.resetTimer();
 			}		
 		});
 	}
