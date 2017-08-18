@@ -60,15 +60,17 @@ class TimerContainer extends React.Component {
 
 	render() {
 		return(
-			<div>
-				{this.state.secondsLeft < 10 ? '0' + this.state.secondsLeft : this.state.secondsLeft}
+			<div className="timerContainer">
+				<div className="timerText">
+					{this.state.secondsLeft < 10 ? '0' + this.state.secondsLeft : this.state.secondsLeft}
+				</div>
 				{this.state.started ? 
-					<div>
-						<button onClick={this.stopTimer.bind(this)}>Pause</button>	
+					<div className="timerButtonContainer">
+						<button className="timerButton pauseButton" onClick={this.stopTimer.bind(this)}>Pause</button>	
 					</div>:
-					<div>
-						<button onClick={this.startTimer.bind(this)}>Start</button>
-						<button onClick={this.resetTimer.bind(this)}>Reset</button>
+					<div className="timerButtonContainer">
+						<button className="timerButton startButton" onClick={this.startTimer.bind(this)}>Start<span></span></button>
+						<button className="timerButton resetButton" onClick={this.resetTimer.bind(this)}>Reset</button>
 					</div>				
 				}								
 			</div>

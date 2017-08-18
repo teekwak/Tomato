@@ -1,0 +1,55 @@
+#app {
+  font-family: Arial;
+  display: grid;
+}
+
+.dateContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: stretch;
+  align-items: center;
+  text-align: center;
+}
+
+.timerContainer {
+  display: grid;
+  grid-gap: 1em;
+  align-items: center;
+}
+
+.timerText {
+  text-align: center;
+}
+
+.timerButtonContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+  justify-content: stretch;
+}
+
+.timerButton {
+  border-radius: 5px;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  outline: 0;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.startButton {
+  grid-column: 1 / span 2;
+  background-color: #00ff00;
+}
+
+.pauseButton {
+  grid-column: 2 / span 2;
+  background-color: #ff0000;
+}
+
+.resetButton {
+  grid-column: 3 / span 2;
+  background-color: #ffff00;
+}

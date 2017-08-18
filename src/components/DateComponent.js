@@ -58,7 +58,7 @@ class DateComponent extends React.Component {
 
 	render() {
 		return (
-			<div className="date">
+			<div className="dateContainer">
 				<h1>{this.state.date}</h1>
 				<h3>{this.state.time}</h3>
 			</div>
