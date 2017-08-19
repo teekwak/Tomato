@@ -27,15 +27,26 @@ class TimerContainer extends React.Component {
 				this.toggleStarted();
 				this.sendNotification();
 				this.resetTimer();
-			}		
+			}
 		});
+	}
+
+	getTimeLeft() {
+		const minutesLeft = Math.floor(this.state.secondsLeft / 60);
+		const secondsLeft = this.state.secondsLeft % 60;
+
+		if(secondsLeft < 10) {
+			return minutesLeft + ':0' + secondsLeft;
+		}
+
+		return minutesLeft + ':' + secondsLeft;
 	}
 
 	resetTimer() {
 		this.setState({secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE});
 	}
 
-	sendNotification() {		
+	sendNotification() {
 		let myNotification = new Notification('Notification Title', {
 			body: 'This is the notification body'
 		});
@@ -63,17 +74,17 @@ class TimerContainer extends React.Component {
 		return(
 			<div className="timerContainer">
 				<div className="timerText">
-					{this.state.secondsLeft < 10 ? '0' + this.state.secondsLeft : this.state.secondsLeft}
+					{this.getTimeLeft()}
 				</div>
-				{this.state.started ? 
+				{this.state.started ?
 					<div className="timerButtonContainer">
-						<button className="timerButton pauseButton" onClick={this.stopTimer.bind(this)}>Pause</button>	
+						<button className="timerButton pauseButton" onClick={this.stopTimer.bind(this)}>Pause</button>
 					</div>:
 					<div className="timerButtonContainer">
 						<button className="timerButton startButton" onClick={this.startTimer.bind(this)}>Start<span></span></button>
 						<button className="timerButton resetButton" onClick={this.resetTimer.bind(this)}>Reset</button>
-					</div>				
-				}								
+					</div>
+				}
 			</div>
 		);
 	}
