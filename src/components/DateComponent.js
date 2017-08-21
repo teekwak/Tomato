@@ -9,7 +9,7 @@ class DateComponent extends React.Component {
 		};
 		this.interval = null;
 		this.months = [
-			'January', 'February', 'March', 
+			'January', 'February', 'March',
 			'April', 'May', 'June',
 			'July', 'August', 'September',
 			'October', 'November', 'December'
@@ -19,7 +19,7 @@ class DateComponent extends React.Component {
 	computeCurrentDateAndTime() {
 		const dateObject = new Date();
 		const month = this.months[dateObject.getMonth()];
-		const day = dateObject.getDay();
+		const day = dateObject.getDate();
 
 		let hour = dateObject.getHours();
 		let minute = dateObject.getMinutes();
@@ -42,7 +42,7 @@ class DateComponent extends React.Component {
 		}
 
 		this.setState({
-			date: month + ' ' + day + ' ',
+			date: month + ' ' + day,
 			time: hour + ':' + minute + ':' + second + ' ' + ampm
 		});
 	}
