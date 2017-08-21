@@ -1,12 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 
-class DateComponent extends React.Component {
-	constructor() {
-		super();
+export default class DateComponent extends React.Component<any, any> {
+	private interval: NodeJS.Timer;
+	private months: Array<string>;
+
+	constructor(props: any) {
+		super(props);
 		this.state = {
 			date: '',
 			time: ''
 		};
+
 		this.interval = null;
 		this.months = [
 			'January', 'February', 'March',
@@ -21,9 +25,12 @@ class DateComponent extends React.Component {
 		const month = this.months[dateObject.getMonth()];
 		const day = dateObject.getDate();
 
+		let minute: any;
+		let second: any;
+
 		let hour = dateObject.getHours();
-		let minute = dateObject.getMinutes();
-		let second = dateObject.getSeconds();
+		minute = dateObject.getMinutes();
+		second = dateObject.getSeconds();
 		let ampm = 'am';
 
 		if(hour == 0) {
@@ -48,7 +55,7 @@ class DateComponent extends React.Component {
 	}
 
 	componentDidMount() {
-		this.computeCurrentDateAndTime(); // render immediately upon mounting
+		this.computeCurrentDateAndTime();
 		this.interval = setInterval(() => this.computeCurrentDateAndTime(), 1000);
 	}
 
@@ -65,5 +72,3 @@ class DateComponent extends React.Component {
 		);
 	}
 }
-
-export default DateComponent;

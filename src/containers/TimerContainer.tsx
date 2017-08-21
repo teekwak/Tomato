@@ -1,6 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 
-class TimerContainer extends React.Component {
+export default class TimerContainer extends React.Component<any, any> {
+	private MAXIMUM_MINUTES: number;
+	private SECONDS_PER_MINUTE: number;
+	private interval: NodeJS.Timer;
+
 	constructor() {
 		super();
 		this.state = {
@@ -89,5 +93,3 @@ class TimerContainer extends React.Component {
 		);
 	}
 }
-
-export default TimerContainer;

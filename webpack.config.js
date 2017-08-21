@@ -1,33 +1,25 @@
-const path = require('path');
-
 module.exports = {
-	devtool: 'eval',
-	context: path.join(__dirname, 'views'),
-	entry: [
-		'./entry.js'
-	],
+	entry: './src/index.tsx',
 	output: {
-		path: path.join(__dirname, 'views'),
 		filename: 'bundle.js',
+		path: __dirname + '/views'
 	},
+
+	devtool: 'source-map',
+
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js', '.json']
+	},
+
 	module: {
 		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [
-					'babel-loader',
-				],
-			},
-			{
-				test: /\.css$/,
-				loader: 'style-loader!css-loader',
-			}
-		],
+			{ test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+			{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+		]
 	},
-	resolve: {
-		modules: [
-			path.join(__dirname, 'node_modules'),
-		],
-	}
+
+	externals: {
+		'react': 'React',
+		'react-dom': 'ReactDOM'
+	},
 };
