@@ -5,3 +5,4 @@ __snapshots__
 coverage
 
 views/bundle.js
+views/bundle.js.map
