@@ -9,10 +9,11 @@ let mainWindow;
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
-		width: 800,
+		width: 400,
 		height: 600,
 		titleBarStyle: 'hidden',
-		resizable: false
+		resizable: false,
+		backgroundColor: '#000033'
 	});
 
 	mainWindow.loadURL(url.format({
