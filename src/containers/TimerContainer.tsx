@@ -8,8 +8,8 @@ export default class TimerContainer extends React.Component<any, any> {
 	constructor() {
 		super();
 		this.state = {
-			secondsLeft: 0,
-			started: false
+			running: false,
+			secondsLeft: 0
 		};
 		this.MAXIMUM_MINUTES = 1;
 		this.SECONDS_PER_MINUTE = 10;
@@ -18,6 +18,7 @@ export default class TimerContainer extends React.Component<any, any> {
 
 	public componentDidMount() {
 		this.resetTimer();
+		this.calculateCircleStuff();
 	}
 
 	public componentWillUnmount() {
@@ -28,9 +29,10 @@ export default class TimerContainer extends React.Component<any, any> {
 		this.setState({secondsLeft: this.state.secondsLeft - 1}, () => {
 			if (this.state.secondsLeft === 0) {
 				clearInterval(this.interval);
-				this.toggleStarted();
+				this.toggleRunning();
 				this.sendNotification();
 				this.resetTimer();
+				this.resetCircle();
 			}
 		});
 	}
@@ -47,7 +49,10 @@ export default class TimerContainer extends React.Component<any, any> {
 	}
 
 	public resetTimer() {
-		this.setState({secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE});
+		this.setState({secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE}, () => {
+			this.resetCircle();
+			this.pauseCircle();
+		});
 	}
 
 	public sendNotification() {
@@ -61,26 +66,57 @@ export default class TimerContainer extends React.Component<any, any> {
 	}
 
 	public startTimer() {
-		this.toggleStarted();
+		this.toggleRunning();
 		this.interval = setInterval(() => this.decrementSecondsLeft(), 1000);
+		this.startCircle();
 	}
 
 	public stopTimer() {
-		this.toggleStarted();
+		this.toggleRunning();
 		clearInterval(this.interval);
+		this.pauseCircle();
 	}
 
-	public toggleStarted() {
-		this.setState({started: !this.state.started});
+	public toggleRunning() {
+		this.setState({running: !this.state.running});
+	}
+
+	public resetCircle() {
+		const circle = document.getElementById('countingCircle');
+		const clone = circle.cloneNode(true);
+		circle.parentNode.replaceChild(clone, circle);
+	}
+
+	public pauseCircle() {
+		document.getElementById('countingCircle').style.webkitAnimationPlayState = 'paused';
+	}
+
+	public startCircle() {
+		document.getElementById('countingCircle').style.webkitAnimationPlayState = 'running';
+	}
+
+	public calculateCircleStuff() {
+		const circle = document.getElementById('countingCircle');
+		const radius = circle.getAttribute('r');
+		const circumference = (2 * Math.PI * parseFloat(radius)).toString();
+
+		circle.style.strokeDasharray = circumference;
+		circle.style.strokeDashoffset = circumference;
+		circle.style.animation = 'countdown ' + this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE + 's linear infinite';
 	}
 
 	public render() {
 		return(
 			<div className="timerContainer">
+				<svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+					<circle id="countingCircle" cx="250" cy="250" r="200" />
+				</svg>
+
 				<div className="timerText">
 					{this.getTimeLeft()}
 				</div>
-				{this.state.started ?
+
+				{this.state.running ?
 					<div className="timerButtonContainer">
 						<button className="timerButton pauseButton" onClick={this.stopTimer.bind(this)}>Pause</button>
 					</div> :

@@ -64,3 +64,19 @@
   grid-column: 3 / span 2;
   background-color: #ffff00;
 }
+
+svg {
+  transform: rotate(-90deg);
+}
+
+svg > circle {
+  stroke: white;
+  fill: none;
+  stroke-width: 0.2em;
+}
+
+@keyframes countdown {
+  0% {
+    stroke-dashoffset: 0;
+  }
+}
