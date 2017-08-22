@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export default class DateComponent extends React.Component<any, any> {
 	private interval: NodeJS.Timer;
-	private months: Array<string>;
+	private months: string[];
 
 	constructor(props: any) {
 		super(props);
@@ -20,7 +20,7 @@ export default class DateComponent extends React.Component<any, any> {
 		];
 	}
 
-	computeCurrentDateAndTime() {
+	public computeCurrentDateAndTime() {
 		const dateObject = new Date();
 		const month = this.months[dateObject.getMonth()];
 		const day = dateObject.getDate();
@@ -33,18 +33,18 @@ export default class DateComponent extends React.Component<any, any> {
 		second = dateObject.getSeconds();
 		let ampm = 'am';
 
-		if(hour == 0) {
+		if (hour === 0) {
 			hour = 12;
 		} else if (hour > 12) {
 			hour -= 12;
 			ampm = 'pm';
 		}
 
-		if(minute < 10) {
+		if (minute < 10) {
 			minute = '0' + minute;
 		}
 
-		if(second < 10) {
+		if (second < 10) {
 			second = '0' + second;
 		}
 
@@ -54,16 +54,16 @@ export default class DateComponent extends React.Component<any, any> {
 		});
 	}
 
-	componentDidMount() {
+	public componentDidMount() {
 		this.computeCurrentDateAndTime();
 		this.interval = setInterval(() => this.computeCurrentDateAndTime(), 1000);
 	}
 
-	componentWillUnmount() {
+	public componentWillUnmount() {
 		clearInterval(this.interval);
 	}
 
-	render() {
+	public render() {
 		return (
 			<div className="dateContainer">
 				<h1 className="currentDate">{this.state.date}</h1>

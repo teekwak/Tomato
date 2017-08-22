@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import DateComponent from './DateComponent';
 import TimerContainer from '../Containers/TimerContainer';
+import DateComponent from './DateComponent';
 
 export class App extends React.Component<any, undefined> {
-	render() {
+	public render() {
 		return (
 			<div>
 				<DateComponent />

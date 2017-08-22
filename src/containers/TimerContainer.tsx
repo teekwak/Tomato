@@ -16,17 +16,17 @@ export default class TimerContainer extends React.Component<any, any> {
 		this.interval = null;
 	}
 
-	componentDidMount() {
+	public componentDidMount() {
 		this.resetTimer();
 	}
 
-	componentWillUnmount() {
+	public componentWillUnmount() {
 		clearInterval(this.interval);
 	}
 
-	decrementSecondsLeft() {
+	public decrementSecondsLeft() {
 		this.setState({secondsLeft: this.state.secondsLeft - 1}, () => {
-			if(this.state.secondsLeft == 0) {
+			if (this.state.secondsLeft === 0) {
 				clearInterval(this.interval);
 				this.toggleStarted();
 				this.sendNotification();
@@ -35,23 +35,23 @@ export default class TimerContainer extends React.Component<any, any> {
 		});
 	}
 
-	getTimeLeft() {
+	public getTimeLeft() {
 		const minutesLeft = Math.floor(this.state.secondsLeft / 60);
 		const secondsLeft = this.state.secondsLeft % 60;
 
-		if(secondsLeft < 10) {
+		if (secondsLeft < 10) {
 			return minutesLeft + ':0' + secondsLeft;
 		}
 
 		return minutesLeft + ':' + secondsLeft;
 	}
 
-	resetTimer() {
+	public resetTimer() {
 		this.setState({secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE});
 	}
 
-	sendNotification() {
-		let myNotification = new Notification('Notification Title', {
+	public sendNotification() {
+		const myNotification = new Notification('Notification Title', {
 			body: 'This is the notification body'
 		});
 
@@ -60,21 +60,21 @@ export default class TimerContainer extends React.Component<any, any> {
 		};
 	}
 
-	startTimer() {
+	public startTimer() {
 		this.toggleStarted();
 		this.interval = setInterval(() => this.decrementSecondsLeft(), 1000);
 	}
 
-	stopTimer() {
+	public stopTimer() {
 		this.toggleStarted();
 		clearInterval(this.interval);
 	}
 
-	toggleStarted() {
+	public toggleStarted() {
 		this.setState({started: !this.state.started});
 	}
 
-	render() {
+	public render() {
 		return(
 			<div className="timerContainer">
 				<div className="timerText">
@@ -83,7 +83,7 @@ export default class TimerContainer extends React.Component<any, any> {
 				{this.state.started ?
 					<div className="timerButtonContainer">
 						<button className="timerButton pauseButton" onClick={this.stopTimer.bind(this)}>Pause</button>
-					</div>:
+					</div> :
 					<div className="timerButtonContainer">
 						<button className="timerButton startButton" onClick={this.startTimer.bind(this)}>Start<span></span></button>
 						<button className="timerButton resetButton" onClick={this.resetTimer.bind(this)}>Reset</button>
