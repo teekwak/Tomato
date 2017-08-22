@@ -1,5 +1,8 @@
+* {
+  font-family: Lato;
+}
+
 #app {
-  font-family: Arial;
   display: grid;
 }
 
