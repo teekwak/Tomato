@@ -13,7 +13,7 @@ function createWindow() {
 		height: 600,
 		titleBarStyle: 'hidden',
 		resizable: false,
-		backgroundColor: '#000033'
+		backgroundColor: '#595959'
 	});
 
 	mainWindow.loadURL(url.format({
