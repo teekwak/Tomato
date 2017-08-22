@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import TimerContainer from '../Containers/TimerContainer';
+import TimerContainer from '../containers/TimerContainer';
 import DateComponent from './DateComponent';
 
 export class App extends React.Component<any, undefined> {
