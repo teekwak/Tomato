@@ -12,7 +12,7 @@ export default class TimerContainer extends React.Component<any, any> {
 			secondsLeft: 0
 		};
 		this.MAXIMUM_MINUTES = 1;
-		this.SECONDS_PER_MINUTE = 10;
+		this.SECONDS_PER_MINUTE = 3;
 		this.interval = null;
 	}
 
@@ -61,8 +61,12 @@ export default class TimerContainer extends React.Component<any, any> {
 		});
 
 		myNotification.onclick = () => {
-			console.log('Notification clicked');
+			myNotification.close();
 		};
+
+		setTimeout(() => {
+			myNotification.close();
+		}, 5000);
 	}
 
 	public startTimer() {
