@@ -2,6 +2,13 @@
   font-family: Lato;
 }
 
+body {
+  margin: 0;
+  -webkit-app-region: drag;
+  width: 100vw;
+  height: 100vh;
+}
+
 #app {
   display: grid;
 }
@@ -12,6 +19,8 @@
   justify-content: stretch;
   align-items: center;
   text-align: center;
+  -webkit-user-select: none;
+  cursor: default;
 }
 
 .currentDate {
@@ -27,6 +36,8 @@
   display: grid;
   grid-gap: 1em;
   align-items: center;
+  -webkit-user-select: none;
+  cursor: default;
 }
 
 .timerButtonContainer {
