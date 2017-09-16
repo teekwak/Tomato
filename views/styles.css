@@ -69,7 +69,7 @@ svg {
   transform: rotate(-90deg);
 }
 
-svg > circle {
+#countingCircle {
   stroke: white;
   fill: none;
   stroke-width: 0.2em;
@@ -79,4 +79,10 @@ svg > circle {
   0% {
     stroke-dashoffset: 0;
   }
+}
+
+#backgroundCircle {
+  stroke: gray;
+  fill: none;
+  stroke-width: 0.5em;
 }
