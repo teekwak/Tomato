@@ -20,16 +20,13 @@
 
 .currentTime {
   font-size: 3em;
+  margin: 0;
 }
 
 .timerContainer {
   display: grid;
   grid-gap: 1em;
   align-items: center;
-}
-
-.timerText {
-  text-align: center;
 }
 
 .timerButtonContainer {
@@ -48,6 +45,13 @@
   padding: 20px;
   text-align: center;
   transition: all 0.5s;
+}
+
+#timerText {
+  text-anchor: middle;
+  alignment-baseline: middle;
+  font-size: 5em;
+  transform: translate(250px, 250px) rotate(90deg);
 }
 
 .startButton {

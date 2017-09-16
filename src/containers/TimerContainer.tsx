@@ -115,11 +115,8 @@ export default class TimerContainer extends React.Component<any, any> {
 				<svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
 					<circle id="backgroundCircle" cx="250" cy="250" r="200" />
 					<circle id="countingCircle" cx="250" cy="250" r="200" />
+					<text id="timerText">{this.getTimeLeft()}</text>
 				</svg>
-
-				<div className="timerText">
-					{this.getTimeLeft()}
-				</div>
 
 				{this.state.running ?
 					<div className="timerButtonContainer">
