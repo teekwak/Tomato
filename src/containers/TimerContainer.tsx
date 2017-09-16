@@ -26,7 +26,7 @@ export default class TimerContainer extends React.Component<any, any> {
 	}
 
 	public decrementSecondsLeft() {
-		this.setState({secondsLeft: this.state.secondsLeft - 1}, () => {
+		this.setState({ secondsLeft: this.state.secondsLeft - 1 }, () => {
 			if (this.state.secondsLeft === 0) {
 				clearInterval(this.interval);
 				this.toggleRunning();
@@ -49,7 +49,7 @@ export default class TimerContainer extends React.Component<any, any> {
 	}
 
 	public resetTimer() {
-		this.setState({secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE}, () => {
+		this.setState({ secondsLeft: this.MAXIMUM_MINUTES * this.SECONDS_PER_MINUTE }, () => {
 			this.resetCircle();
 			this.pauseCircle();
 		});
@@ -82,7 +82,7 @@ export default class TimerContainer extends React.Component<any, any> {
 	}
 
 	public toggleRunning() {
-		this.setState({running: !this.state.running});
+		this.setState({ running: !this.state.running });
 	}
 
 	public resetCircle() {
@@ -110,7 +110,7 @@ export default class TimerContainer extends React.Component<any, any> {
 	}
 
 	public render() {
-		return(
+		return (
 			<div className="timerContainer">
 				<svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
 					<circle id="backgroundCircle" cx="250" cy="250" r="200" />
